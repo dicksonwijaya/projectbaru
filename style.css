@@ -1,0 +1,436 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, Arial, sans-serif;
+}
+
+svg {
+    fill: rgb(96, 96, 96);
+}
+
+.navigation {
+    padding: 0 16px;
+    display: flex;
+    justify-content: space-between;
+    height: 56px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: white;
+    border-bottom: 0.5px solid #e6e6e6;
+    z-index: 1000; /* Adjust the value as needed */
+   
+}
+
+.navigation__button {
+    border: none;
+    padding: 5px 10px;
+    background-color: transparent;
+    cursor: pointer;
+    line-height: 5px;
+}
+
+.navigation__menu,
+.navigation__search,
+.navigation__options {
+    display: flex;
+    align-items: center;
+}
+
+.navigation__options .navigation__button {
+    margin-right: 8px;
+}
+
+.navigation__menu img {
+    margin-left: 5px;
+}
+
+.navigation__menu__button svg {
+    height: 24px;
+}
+
+.navigation__search input {
+    width: 360px;
+    height: 32px;
+    border: 1px solid rgb(211, 211, 211);
+    font-size: 16px;
+    padding: 3px 8px;
+    border-radius:15px;
+}
+
+.navigation__search__icon {
+    border: 1px solid rgb(211, 211, 211);
+    border-left: none;
+    height: 32px;
+    width: 65px;
+}
+
+.navigation__search__icon:hover {
+    background-color: #e4e4e4;
+}
+
+.navigation__search__icon svg {
+    height: 20px;
+    width: 20px;
+}
+
+.navigation__options {
+    display: flex;
+}
+
+.navigation__icon {
+    width: 24px;
+    height: 24px;
+}
+
+.navigation__avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: black;
+}
+
+.chips {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    position: fixed;
+    top: 56px;
+    right: 0;
+    left: 240px;
+    background-color: white;
+}
+
+.chips__item {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.05);
+    font-size: 14px;
+    padding: 0 12px;
+    line-height: 30px;
+    border-radius: 16px;
+    margin: 12px 12px 12px 0;
+    cursor: pointer;
+}
+
+.chips__item:first-child {
+    margin-left: 24px;
+}
+
+.chips__item--selected {
+    background-color: black;
+    color: white;
+}
+
+.sidebar {
+    
+    width: 240px;
+    position: fixed;
+    top: 56px;
+    left: 0;
+    bottom: 0;
+    padding: 12px 0;
+    height: calc(100vh - 80px);
+    border: 1px solid #CCC;
+    
+}
+
+.sidebar__section {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.sidebar__section h3 {
+    padding: 8px 24px;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: rgb(96, 96, 96);
+}
+
+.sidebar__section__link {
+    display: flex;
+    color: rgb(3, 3, 3);
+    text-decoration: none;
+    align-items: center;
+    font-size: 14px;
+    padding: 0 24px;
+    height: 40px;
+}
+
+.sidebar__section__link svg,
+.sidebar__section__avatar {
+    height: 24px;
+    width: 24px;
+    margin-right: 24px;
+}
+
+.sidebar__section__avatar {
+    border-radius: 50%;
+    background-color: grey;
+}
+
+.sidebar__section__link--selected {
+    background-color: rgba(0, 0, 0, 0.1);
+    font-weight: 500;
+}
+
+.sidebar__section__link--selected svg { 
+    fill: #f00
+}
+
+.sidebar__section:last-child {
+    padding: 16px 24px 0 24px
+}
+
+.sidebar__section:last-child p {
+    font-size: 13px;
+    color: #909090;
+}
+
+.sidebar__section__link--small {
+    margin-right: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #606060;
+    text-decoration: none;
+}
+
+.feed {
+    margin-top: 140px;
+    margin-left: 240px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.feed__item {
+    margin: 0 8px 40px 8px;
+}
+
+.feed__item__thumbnail {
+    width: 360px;
+    height: 202px;
+    background-color: grey;
+}
+
+.feed__item__info {
+    display: flex;
+    font-size: 14px;
+    color: rgb(96, 96, 96);
+}
+
+.feed__item__info h3 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: rgb(3, 3, 3);
+}
+
+.feed__item__info a {
+    text-decoration: none;
+    color: unset;
+}
+
+.feed__item__info p {
+    margin: 0;
+}
+
+.feed__item__info__avatar {
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+    background-color: grey;
+    margin: 12px 12px 0 0;
+}
+
+.feed__section {
+    border-top: 3px solid lightgrey;
+    border-bottom: 3px solid lightgrey;
+    margin: 24px 35px 48px;
+}
+
+.feed__section h2 {
+    margin-left: 8px;
+}
+
+.feed__section__items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.main_content{
+    display:flex;
+    flex-direction: column;
+
+}
+.main_header {
+    display:flex;
+    flex-direction: row;
+}
+
+.main_header_text {
+    height:260px;
+    width:600px;
+    padding-left:410px;
+  
+    padding-top:20px;
+ 
+    font-size: 25px;
+
+    font-family: Lato, sans-serif;
+}
+
+.main_header_img {
+    
+    width:400px;
+    margin-top: 90px;
+ 
+
+
+}
+
+
+.blackman_img{
+    opacity:0.9;
+
+
+
+}
+.signup-button {
+    background-color: #2b2d2f; /* Darker red on hover */
+    color: white; /* Text color */
+    border: none; /* No border */
+    padding: 10px 20px; /* Adjust padding as needed */
+    font-size: 16px; /* Font size */
+    border-radius: 5px; /* Rounded corners */
+  }
+
+.sign-in-button {
+    background-color: darkred; /* Darker red on hover */
+   
+    color: white; /* Text color */
+    border: none; /* No border */
+    padding: 5px 10px; /* Adjust padding as needed */
+    font-size: 14px; /* Font size */
+    border-radius: 5px; /* Rounded corners */
+    margin-right: 7px;
+    text-align: center; /* Center the text horizontally */
+
+}
+
+.main_body{
+    display:flex;
+    flex-wrap: wrap;
+
+
+
+    margin-left:240px;
+    background-color: white;
+    padding-left:150px;
+    padding-top:20px;
+    border-top:1px solid #e6e6e6;
+    border-bottom:1px solid #e6e6e6;
+    font-size: 25px;
+
+    font-family: Lato, sans-serif;
+  
+}
+  
+.container_1{
+   
+    background-color: white;
+    justify-content: center; /* Horizontally center the content */
+    align-items: center; /* Vertically center the content */
+    display: flex;
+    width: 350px; /* Set the width of each container */
+    height: 330px;
+    margin:10px;
+    box-sizing: border-box; /* Include padding and border in box sizing */
+
+
+}
+.container_2{
+   
+    background-color: white;
+
+    width: 610px; /* Set the width of each container */
+    height: 330px;
+    margin:10px;
+    box-sizing: border-box; /* Include padding and border in box sizing */
+
+
+}
+.video-title {
+    font-family: Roboto, Arial, sans-serif;
+    color:black;
+    text-decoration: none;
+}
+
+.hashtagButton {
+    background-color: #2b2d2f; /* Darker red on hover */
+    color: white; /* Text color */
+    border: none; /* No border */
+    padding: 10px 20px; /* Adjust padding as needed */
+    font-size: 15px; /* Font size */
+    border-radius: 5px; /* Rounded corners */
+    width:113px;
+}
+.clicked-button {
+    background-color: black;
+    /* Add any other styles you want for the clicked state */
+}
+
+.main_body2{
+    display: none; /* Hide the element by default */
+
+
+    flex-wrap: wrap;
+
+    
+
+    margin-left:240px;
+    background-color: #e6e6e6;
+    padding-left:50px;
+    padding-top:20px;
+    border-top:1px solid #e6e6e6;
+    border-bottom:1px solid #e6e6e6;
+    font-size: 25px;
+
+    font-family: Lato, sans-serif;
+  
+}
+
+/* Define CSS styles for the result_table class */
+
+.result_table {
+    width: 100%; /* Optional: Adjust the table width as needed */
+    border-collapse: collapse; /* Optional: Remove cell spacing */
+    background-color: white;
+  }
+  
+  .result_table th,
+  .result_table td {
+    padding: 10px; /* Adjust the value to control the spacing */
+    border: 1px solid #ccc; /* Optional: Add borders to cells */
+    text-align: center; /* Optional: Align cell content as needed */
+    font-size:20px;
+  }
+  
+  .result_table td:nth-child(2) {
+    text-align: left; /* Left-align text in the second (Title) column */
+}
+  
+  
+  /* Add space between columns */
+  .result_table th {
+    padding-right: 20px; /* Adjust the value to control the space between columns */
+    
+  }
+  
+  .video-thumbnail {
+    width: 180px;
+    height: 80px;
+}
+
