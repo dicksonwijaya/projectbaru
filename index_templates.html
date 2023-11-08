@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Web Scraper Frontend</title>
+</head>
+
+<body>
+    <h1>Web Scraper</h1>
+    <input type="text" id="searchQuery" placeholder="Enter search query">
+    <button onclick="search()">Search</button>
+    <div id="results"></div>
+</body>
+
+
+<script>
+    function search() {
+        var searchQuery = document.getElementById('searchQuery').value;
+    
+        // 使用 Fetch API 发起 GET 请求到后端 API
+        fetch(`/api/scrape?search_query=${searchQuery}`)
+            .then(response => response.json())
+            .then(data => {
+                displayResults(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+    
+    function displayResults(data) {
+        var resultsDiv = document.getElementById('results');
+        resultsDiv.innerHTML = ''; // clear result before
+    
+        for (var item of data) {
+            var resultElement = document.createElement('div');
+            resultElement.innerHTML = `
+                <p>Text: ${item['Text']}</p>
+                <p>Link: <a href="${item['Link']}" target="_blank">${item['Link']}</a></p>
+                <p>Image URL: ${item['Image URL']}</p>
+            `;
+            resultsDiv.appendChild(resultElement);
+        }
+    }
+    
+</script>
+</html>

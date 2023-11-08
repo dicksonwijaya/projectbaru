@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="script.js"></script>
+    <script src="server.js"></script>
+    <script src="https://unpkg.com/url-parse"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+
+    
+    <title>ShortProject</title>
+
+
+
+    
+</head>
+<body>
+
+    <div class="navigation">
+        <div class="navigation__menu">
+            <!-- menu button -->    
+            <img class="logo" src="img/logo.png" width="50" height="40">
+            <a href="index.html" style="text-decoration: none;color:#2b2d2f;font-size:14px;margin-top:3px;"><h2>專題</h2></a>
+        </div>
+    </div>
+    
+    <!-- main -->
+    <div class="left-side">
+
+        <div class="content">
+            <h1>Web Scraper Frontend</h1>
+            <input type="text" id="searchQuery" placeholder="Enter search query">
+            <button onclick="search()">Search</button>
+            
+        </div>
+    </div>
+    
+    <div class="right-side">
+ 
+
+        <div class="video-container">
+            <video id="myVideo" class="video-player" controls>
+                <source src="downloaded_video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="corner-content">
+                <div class="circleVP circleVP1"></div>
+                <div class="circleVP circleVP2"></div>
+                <div class="circleVP circleVP3"></div>
+            </div>
+        </div>
+        
+       
+    </div>
+    <div id="results"></div>
+        
+        
+    <script >
+        function search() {
+            var searchQuery = document.getElementById('searchQuery').value;
+        
+            // 使用 Fetch API 发起 GET 请求到后端 API
+            fetch('http://localhost:5000/api/scrape?search_query=' + searchQuery)
+                .then(response => response.json())
+                .then(data => {
+                    displayResults(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+        
+        function displayResults(data) {
+            var resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '';
+        
+            for (var item of data) {
+                var resultElement = document.createElement('div');
+                resultElement.innerHTML = `
+                    <p>Text: ${item['Text']}</p>
+                    <p>Link: <a href="${item['Link']}" target="_blank">${item['Link']}</a></p>
+                    <p>Image URL: ${item['Image URL']}</p>
+                `;
+                resultsDiv.appendChild(resultElement);
+            }
+        }
+    </script>
+
+
+        
+
+</body>
+</html>
